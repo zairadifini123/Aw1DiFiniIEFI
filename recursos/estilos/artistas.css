@@ -120,7 +120,8 @@
 
 .tarjeta-artista__marco-foto {
     width: 100%;
-    height: 220px;
+    /* Usamos aspect-ratio para que la foto mantenga una proporción perfecta responsiva */
+    aspect-ratio: 16 / 10;
     background-color: #1a2238;
     border: 1.5px solid var(--color-borde);
     border-radius: 8px;
@@ -132,6 +133,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top; /* Evita que se corten las caras centrando hacia arriba */
     display: block;
 }
 
@@ -183,15 +185,11 @@
    FAN PACKS OFICIALES
    ========================================= */
 
-/* Grilla donde se muestran todos los Fan Packs */
-
 #lista-fanpacks-artista {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
 }
-
-/* Tarjeta individual del Fan Pack */
 
 .pack-compra {
     background-color: #1a2238;
@@ -203,19 +201,15 @@
     gap: 14px;
 }
 
-/* Cabecera de la tarjeta */
-
 .pack-compra__cabecera {
     display: flex;
     align-items: center;
     gap: 14px;
 }
 
-/* Imagen del Fan Pack */
-
 .pack-compra__miniatura {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     border: 1.5px dashed var(--color-borde);
     border-radius: 6px;
     display: flex;
@@ -226,19 +220,20 @@
     color: var(--color-texto-secundario);
     flex-shrink: 0;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .pack-compra__miniatura img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover; /* Cambiado a cover para que llene bien el espacio sin deformarse */
+    object-position: center;
     border-radius: 6px;
 }
 
-/* Datos del Fan Pack */
-
 .pack-compra__datos {
     min-width: 0;
+    flex: 1;
 }
 
 .pack-compra__nombre {
@@ -252,8 +247,6 @@
     color: var(--color-texto-secundario);
     line-height: 1.5;
 }
-
-/* Formulario de compra */
 
 .pack-compra__form {
     display: flex;
@@ -270,8 +263,6 @@
     color: var(--color-texto-principal);
     font-size: 0.9rem;
 }
-
-/* Precio y botón */
 
 .pack-compra__pie {
     display: flex;
@@ -309,15 +300,13 @@
 
 @media (min-width: 768px) {
 
-    /* Catálogo de artistas */
-
+    /* Catálogo de artistas a 3 columnas */
     .artistas-grilla {
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
     }
 
-    /* Fan Packs: dos columnas */
-
+    /* Fan Packs a dos columnas */
     #lista-fanpacks-artista {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
