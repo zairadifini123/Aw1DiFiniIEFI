@@ -133,7 +133,7 @@ filtrosGenero.forEach(filtro => {
 // 7. DELEGACIÓN DE EVENTOS
 // ==========================================
 
-document.addEventListener("click", evento => {
+document.addEventListener("click", async evento => {
 
     if (!(evento.target instanceof Element)) return;
 
@@ -142,7 +142,10 @@ document.addEventListener("click", evento => {
 
     if (botonVer) {
 
-        mostrarDetalleArtista(botonVer.dataset.id);
+        const idArtista = botonVer.dataset.id;
+        
+        // Esperamos a que se muestre el detalle para que el DOM interno se pinte
+        await mostrarDetalleArtista(idArtista);
 
         // Mostrar la sección de detalle
         catalogoSeccion.classList.add("seccion-oculta");
@@ -155,8 +158,11 @@ document.addEventListener("click", evento => {
 
         window.location.hash = "detalle-artista";
 
-        // Cargar el estado del botón Seguir
-        cargarEstadoSeguir();
+        // Guardamos el nombre del artista en el dataset del botón de seguir para tenerlo siempre disponible
+        if (btnSeguir) {
+            btnSeguir.dataset.nombreArtista = detalleNombre.textContent.trim();
+            cargarEstadoSeguir();
+        }
 
         return;
 
@@ -177,12 +183,15 @@ document.addEventListener("click", evento => {
 
     if (btnSeguirClick && !detalleSeccion.classList.contains("seccion-oculta")) {
 
-        const nombreArtista = detalleNombre.textContent;
+        // Obtenemos el nombre del artista directamente del atributo seguro del botón
+        const nombreArtista = btnSeguirClick.dataset.nombreArtista || detalleNombre.textContent.trim();
 
-        // Cambiar el estado de seguimiento
+        if (!nombreArtista) return;
+
+        // Cambiar el estado de seguimiento en localStorage
         alternarSeguimiento(nombreArtista);
 
-        // Actualizar el botón
+        // Actualizar visualmente el botón al instante
         actualizarBotonSeguir(btnSeguirClick, nombreArtista);
 
     }
@@ -216,7 +225,7 @@ function cargarEstadoSeguir() {
 
     if (!btnSeguir) return;
 
-    const nombreArtista = detalleNombre.textContent;
+    const nombreArtista = btnSeguir.dataset.nombreArtista || detalleNombre.textContent.trim();
 
     actualizarBotonSeguir(btnSeguir, nombreArtista);
 

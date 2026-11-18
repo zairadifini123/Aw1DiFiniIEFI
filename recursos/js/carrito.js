@@ -176,6 +176,69 @@ async function renderizarCarrito() {
 // CONFIRMAR PEDIDO POR WHATSAPP
 // ==========================================
 
+async function confirmarPedidoWhatsapp() {
+    const reservas = await obtenerReservas();
+
+    if (reservas.length === 0) {
+        mostrarNotificacion("No tenés Fan Packs en el carrito para confirmar.", true);
+        return;
+    }
+
+    const catalogoFanPacks = await obtenerFanPacks();
+    let total = 0;
+
+    let mensajeFicha = "¡Hola SoundDay! Quiero confirmar mi pedido:\n\n";
+
+    for (let i = 0; i < reservas.length; i++) {
+        const item = reservas[i];
+        let packCompleto = null;
+
+        for (let j = 0; j < catalogoFanPacks.length; j++) {
+            if (catalogoFanPacks[j].id === Number(item.id)) {
+                packCompleto = catalogoFanPacks[j];
+                break;
+            }
+        }
+
+        let artista = "Artista oficial";
+        if (packCompleto !== null) {
+            artista = packCompleto.artista;
+        }
+
+        let modalidadTexto = "Retiro en estadio (Día del show)";
+        if (item.modalidad === "domicilio") {
+            modalidadTexto = "Envío postal a domicilio";
+        }
+
+        const subtotal = item.precio * item.cantidad;
+        total = total + subtotal;
+
+        mensajeFicha = mensajeFicha + "• " + item.nombre + "\n";
+        mensajeFicha = mensajeFicha + "  Artista: " + artista + "\n";
+        mensajeFicha = mensajeFicha + "  Modalidad: " + modalidadTexto + "\n";
+        mensajeFicha = mensajeFicha + "  Cantidad: " + item.cantidad + " un.\n";
+        mensajeFicha = mensajeFicha + "  Subtotal: $" + subtotal.toLocaleString("es-AR") + "\n\n";
+    }
+
+    mensajeFicha = mensajeFicha + "TOTAL GENERAL A ABONAR: $" + total.toLocaleString("es-AR");
+
+    const numeroTelefono = "5493510000000"; 
+    const urlWhatsapp = "https://api.whatsapp.com/send?phone=" + numeroTelefono + "&text=" + encodeURIComponent(mensajeFicha);
+
+    mostrarNotificacion("Ficha preparada. Abriendo WhatsApp...", false);
+
+    setTimeout(function () {
+        window.open(urlWhatsapp, "_blank");
+    }, 1000);
+}
+
+if (btnConfirmarWhatsapp) {
+    btnConfirmarWhatsapp.addEventListener("click", function () {
+        confirmarPedidoWhatsapp();
+    });
+}
+
+
 // ==========================================
 // CONFIRMAR PEDIDO POR GMAIL (WEB)
 // ==========================================
@@ -226,11 +289,8 @@ async function confirmarPedidoGmail() {
 
     mensajeFicha = mensajeFicha + "TOTAL GENERAL A ABONAR: $" + total.toLocaleString("es-AR");
 
-    // Datos específicos para Gmail Web
     const correoDestino = "pedidos@soundday.com.ar";
     const asunto = "Confirmación de Pedido - SoundDay";
-    
-    // URL oficial de Gmail para redactar un mensaje nuevo pasando los parámetros codificados
     const urlGmail = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(correoDestino) + "&su=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(mensajeFicha);
 
     mostrarNotificacion("Ficha preparada. Abriendo Gmail...", false);
