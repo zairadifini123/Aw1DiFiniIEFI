@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "artista": "The Beatles",
+        "recinto": "Estadio Kempes",
+        "fecha": "25/09",
+        "interesados": 2500,
+        "imagen": "./recursos/imagenes/artistas/thebeatlestour.jpg",
+        "detalles": {
+            "aperturaPuertas": "17:00",
+            "inicioShow": "21:00",
+            "accesos": [
+                "Portón Norte",
+                "Portón Sur"
+            ],
+            "elementosPermitidos": [
+                "Riñoneras",
+                "Banderas pequeñas sin mástil",
+                "Cargadores portátiles"
+            ],
+            "retiroFanPack": "Desde las 16:00",
+            "setlist": [
+                "Come Together",
+                "Let It Be",
+                "Hey Jude",
+                "Yesterday"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "artista": "BTS",
+        "recinto": "Vélez",
+        "fecha": "09/11",
+        "interesados": 2300,
+        "imagen": "./recursos/imagenes/artistas/btstour.jpg",
+        "detalles": {
+            "aperturaPuertas": null,
+            "inicioShow": null,
+            "accesos": [],
+            "elementosPermitidos": [
+                "Army Bomb oficial",
+                "Banners de papel",
+                "Riñoneras"
+            ],
+            "retiroFanPack": null,
+            "setlist": [
+                "Dynamite",
+                "Butter",
+                "Boy With Luv",
+                "Fake Love"
+            ]
+        }
+    }
+]
