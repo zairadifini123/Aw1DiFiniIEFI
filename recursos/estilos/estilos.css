@@ -136,6 +136,24 @@ ul {
     border-color: var(--color-primario-activo);
 }
 
+.boton-ver-detalle-evento {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid var(--color-primario-activo);
+    border-radius: 6px;
+    background-color: var(--color-primario);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.boton-ver-detalle-evento:hover {
+    background-color: var(--color-primario-activo);
+}
+
 
 /* =========================================
    NAVEGACIÓN Y VISTAS (SPA)
@@ -150,7 +168,8 @@ ul {
     margin-top: 25px;
 }
 
-.boton-volver {
+.boton-volver,
+.boton-volver-eventos {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -163,10 +182,12 @@ ul {
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
+    cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.boton-volver:hover {
+.boton-volver:hover,
+.boton-volver-eventos:hover {
     background-color: var(--color-superficie);
     color: var(--color-texto-principal);
 }
@@ -184,10 +205,11 @@ ul {
 
 
 /* =========================================
-   PANELES Y DETALLES
+   PANELES Y DETALLES COMPARTIDOS
    ========================================= */
 
-.detalle-hero {
+.detalle-hero,
+.detalle-hero--fanpack {
     display: grid;
     grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
     gap: 25px;
@@ -201,20 +223,24 @@ ul {
     box-shadow: 0 4px 12px #0000001a;
 }
 
-.detalle-hero__marco-foto {
+.detalle-hero__marco-foto,
+.detalle-hero--fanpack .detalle-hero__marco-foto {
     width: 100%;
+    max-width: none;
     margin: 0;
     overflow: hidden;
     border-radius: 10px;
 }
 
-.detalle-hero__foto {
+.detalle-hero__foto,
+.detalle-hero--fanpack .detalle-hero__foto {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
     border-radius: 10px;
     object-fit: cover;
     object-position: center;
+    background-color: transparent;
 }
 
 .detalle-hero__info {
@@ -224,21 +250,43 @@ ul {
     min-width: 0;
 }
 
-.detalle-hero__nombre {
+.detalle-hero__nombre,
+#nombre-detalle-fanpack {
     margin: 0;
     color: var(--color-texto-principal);
     font-size: 1.7rem;
     font-weight: 700;
     line-height: 1.3;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+#artista-detalle-fanpack {
+    margin: 0;
+    color: var(--color-primario-activo);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    overflow-wrap: break-word;
 }
 
 .detalle-hero__descripcion,
 .detalle-hero__recinto,
-.detalle-hero__fecha {
+.detalle-hero__fecha,
+#descripcion-detalle-fanpack {
     margin: 0;
     color: var(--color-texto-secundario);
     font-size: 0.9rem;
     line-height: 1.6;
+    overflow-wrap: break-word;
+}
+
+#precio-detalle-fanpack {
+    margin: 4px 0;
+    color: var(--color-primario-activo);
+    font-size: 1.35rem;
+    font-weight: 700;
 }
 
 .detalle-hero__acciones {
@@ -251,7 +299,37 @@ ul {
     border-top: 1px solid var(--color-borde);
 }
 
-.detalle-paneles-grilla {
+#boton-agregar-detalle-fanpack,
+#vista-detalle-fanpack .boton-quitar-pack {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid var(--color-borde);
+    border-radius: 6px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+#boton-agregar-detalle-fanpack:hover,
+#vista-detalle-fanpack .boton-quitar-pack:hover {
+    background-color: var(--color-primario-activo);
+    border-color: var(--color-primario-activo);
+}
+
+#estado-reserva-fanpack {
+    display: block;
+    flex-basis: 100%;
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+}
+
+.detalle-paneles-grilla,
+.detalle-evento-contenedor {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
@@ -259,7 +337,8 @@ ul {
     margin-bottom: 20px;
 }
 
-.panel-box {
+.panel-box,
+.detalle-evento-panel {
     min-width: 0;
     padding: 22px;
     border: 1px solid var(--color-borde);
@@ -272,7 +351,8 @@ ul {
     grid-column: 1 / -1;
 }
 
-.panel-box__titulo {
+.panel-box__titulo,
+.detalle-evento-titulo {
     margin: 0 0 18px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--color-borde);
@@ -287,6 +367,56 @@ ul {
     font-size: 0.9rem;
     line-height: 1.6;
     overflow-wrap: anywhere;
+}
+
+.detalle-evento-dato {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+}
+
+.detalle-evento-dato:last-child {
+    margin-bottom: 0;
+}
+
+.detalle-evento-dato strong {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.detalle-evento-dato span {
+    color: var(--color-texto-principal);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
+
+.detalle-evento-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto-secundario);
+    list-style: none;
+}
+
+.detalle-evento-lista li {
+    padding: 12px 5px;
+    border-bottom: 1px solid var(--color-borde);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
+
+.detalle-evento-lista li:last-child {
+    border-bottom: none;
 }
 
 
@@ -353,7 +483,7 @@ ul {
 
 
 /* =========================================
-   CABECERA PRINCIPAL (Logo a la izquierda siempre)
+   CABECERA PRINCIPAL
    ========================================= */
 
 .encabezado-principal {
@@ -363,7 +493,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permite adaptar si la pantalla es justa */
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -375,7 +505,7 @@ ul {
 }
 
 .encabezado-principal__logo-img {
-    height: 60px; /* Tamaño adaptativo optimizado */
+    height: 60px;
     display: block;
 }
 
@@ -383,7 +513,7 @@ ul {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap; /* Mantiene visibles los elementos sin romper la línea */
+    flex-wrap: wrap;
 }
 
 .encabezado-principal__nav-enlace {
@@ -410,7 +540,7 @@ ul {
 }
 
 .encabezado-principal__nav-perfil--activo {
-    background-color: var(--color-primario-activo, #4f46e5);
+    background-color: var(--color-primario-activo);
 }
 
 .encabezado-principal__perfil-img {
@@ -466,7 +596,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-primario, #6366f1);
+    background-color: var(--color-primario);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -476,7 +606,7 @@ ul {
 
 .pie-principal .mensajeria a:hover {
     transform: scale(1.1);
-    background-color: var(--color-primario-activo, #4f46e5);
+    background-color: var(--color-primario-activo);
 }
 
 .pie-principal .mensajeria img {
@@ -497,7 +627,7 @@ ul {
     }
 
     .encabezado-principal__logo-img {
-        height: 75px; /* Tamaño completo original en pantallas grandes */
+        height: 75px;
     }
 
     .encabezado-principal__nav {
@@ -515,11 +645,13 @@ ul {
         gap: 20px;
     }
 
-    .detalle-hero {
+    .detalle-hero,
+    .detalle-hero--fanpack {
         grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
     }
 
-    .detalle-paneles-grilla {
+    .detalle-paneles-grilla,
+    .detalle-evento-contenedor {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -535,35 +667,42 @@ ul {
 
 @media (max-width: 900px) {
 
-    .detalle-hero {
+    .detalle-hero,
+    .detalle-hero--fanpack {
         grid-template-columns: minmax(180px, 250px) minmax(0, 1fr);
     }
 
-    .detalle-paneles-grilla {
+    .detalle-paneles-grilla,
+    .detalle-evento-contenedor {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 600px) {
 
-    .detalle-hero {
+    .detalle-hero,
+    .detalle-hero--fanpack {
         grid-template-columns: 1fr;
         padding: 18px;
     }
 
-    .detalle-hero__marco-foto {
+    .detalle-hero__marco-foto,
+    .detalle-hero--fanpack .detalle-hero__marco-foto {
         max-width: 100%;
     }
 
-    .detalle-hero__nombre {
+    .detalle-hero__nombre,
+    #nombre-detalle-fanpack {
         font-size: 1.35rem;
     }
 
-    .panel-box {
+    .panel-box,
+    .detalle-evento-panel {
         padding: 16px;
     }
 
-    .boton-volver {
+    .boton-volver,
+    .boton-volver-eventos {
         width: 100%;
         justify-content: center;
     }

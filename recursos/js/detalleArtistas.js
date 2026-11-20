@@ -1,10 +1,85 @@
-
 // ==========================================
 // 1. IMPORTACIONES
 // ==========================================
 
 import { obtenerArtistas } from "./datosArtistas.js";
 import { obtenerFanPacks } from "./datosFanPacks.js";
+
+const CLAVE_ALERTAS = "alertasArtistas";
+
+
+// ==========================================
+// FUNCIONES AUXILIARES DE ALERTA
+// ==========================================
+
+function obtenerAlertasGuardadas() {
+    try {
+        const raw = localStorage.getItem(CLAVE_ALERTAS);
+        const lista = raw ? JSON.parse(raw) : [];
+        return Array.isArray(lista) ? lista : [];
+    } catch (error) {
+        console.error("Error al leer alertas guardadas:", error);
+        return [];
+    }
+}
+
+function guardarAlertas(lista) {
+    localStorage.setItem(CLAVE_ALERTAS, JSON.stringify(lista));
+}
+
+function pintarEstadoAlerta(boton, activa, nombreArtista) {
+    if (!boton) return;
+
+    if (activa) {
+        boton.textContent = "🔔 Alertas activadas";
+        boton.style.backgroundColor = "var(--color-primario)";
+        boton.style.borderColor = "var(--color-primario-activo)";
+        boton.style.color = "#ffffff";
+    } else {
+        boton.textContent = "🔔 Alertas de Tour";
+        boton.style.backgroundColor = "var(--color-superficie)";
+        boton.style.borderColor = "var(--color-borde)";
+        boton.style.color = "var(--color-texto-principal)";
+    }
+
+    if (nombreArtista) {
+        boton.dataset.nombreArtista = nombreArtista;
+    }
+}
+
+function configurarBotonAlerta(nombreArtista) {
+    const botonAlerta = document.querySelector("#detalle-artista .boton-accion-borde");
+
+    if (!botonAlerta) return;
+
+    const alertas = obtenerAlertasGuardadas();
+    const yaActiva = alertas.includes(nombreArtista);
+
+    const nuevoBoton = botonAlerta.cloneNode(true);
+    botonAlerta.replaceWith(nuevoBoton);
+
+    pintarEstadoAlerta(nuevoBoton, yaActiva, nombreArtista);
+
+    nuevoBoton.addEventListener("click", () => {
+        const artistaActual = nuevoBoton.dataset.nombreArtista || nombreArtista;
+        if (!artistaActual) return;
+
+        const actuales = obtenerAlertasGuardadas();
+        const indice = actuales.indexOf(artistaActual);
+
+        if (indice === -1) {
+            actuales.push(artistaActual);
+            guardarAlertas(actuales);
+            pintarEstadoAlerta(nuevoBoton, true, artistaActual);
+            alert(`¡Alerta activada para ${artistaActual}! Te avisaremos cuando haya novedades del tour.`);
+        } else {
+            actuales.splice(indice, 1);
+            guardarAlertas(actuales);
+            pintarEstadoAlerta(nuevoBoton, false, artistaActual);
+            alert(`Alerta desactivada para ${artistaActual}.`);
+        }
+    });
+}
 
 
 // ==========================================
@@ -86,6 +161,8 @@ export async function mostrarDetalleArtista(id) {
     detalleInicio.textContent = artista.inicio || "No especificado";
     detalleAccesos.textContent = artista.accesos || "No especificados";
     detalleElementos.textContent = artista.elementos || "No especificados";
+
+    configurarBotonAlerta(artista.nombre);
 
 
     // ==========================================

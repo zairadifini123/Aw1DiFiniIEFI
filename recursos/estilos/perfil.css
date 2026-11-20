@@ -37,6 +37,7 @@
     min-width: 0;
 }
 
+
 /* ==========================================
    2. SECCIONES Y TARJETAS
    ========================================== */
@@ -79,6 +80,7 @@
     overflow-wrap: break-word;
 }
 
+
 /* ==========================================
    3. INFORMACIÓN DEL PERFIL
    ========================================== */
@@ -112,8 +114,6 @@
     line-height: 1.5;
 }
 
-/* Enlaces rápidos */
-
 .perfil-lista-enlaces {
     display: flex;
     flex-direction: column;
@@ -138,22 +138,9 @@
     text-decoration: underline;
 }
 
-/* ==========================================
-   4. TÍTULOS
-   ========================================== */
-
-.perfil-titulo-seccion {
-    margin: 0 0 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-borde, #1e2540);
-    color: var(--color-texto-principal, #f8fafc);
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.4;
-}
 
 /* ==========================================
-   5. EVENTOS GUARDADOS
+   4. EVENTOS GUARDADOS
    ========================================== */
 
 .perfil-eventos-lista {
@@ -211,9 +198,6 @@
     text-align: right;
 }
 
-/* Botones de eventos */
-
-.boton-ver-detalle-evento,
 .boton-quitar-evento {
     display: inline-block;
     padding: 8px 14px;
@@ -223,19 +207,6 @@
     text-align: center;
     cursor: pointer;
     transition: background-color 0.2s ease;
-}
-
-.boton-ver-detalle-evento {
-    border: 1px solid var(--color-primario-activo, #4f46e5);
-    background-color: var(--color-primario, #4338ca);
-    color: #ffffff;
-}
-
-.boton-ver-detalle-evento:hover {
-    background-color: var(--color-primario-activo, #4f46e5);
-}
-
-.boton-quitar-evento {
     border: 1px solid #dc2626;
     background-color: transparent;
     color: #f87171;
@@ -246,8 +217,9 @@
     color: #ffffff;
 }
 
+
 /* ==========================================
-   6. TABLA DE RESERVAS
+   5. TABLA DE RESERVAS
    ========================================== */
 
 .perfil-tabla-contenedor {
@@ -309,8 +281,9 @@
     background-color: #ffffff1a;
 }
 
+
 /* ==========================================
-   7. LISTAS
+   6. LISTAS
    ========================================== */
 
 .perfil-lista {
@@ -336,8 +309,9 @@
     margin-bottom: 0;
 }
 
+
 /* ==========================================
-   8. GRILLA DE ARTISTAS Y FAN PACKS
+   7. GRILLA DE ARTISTAS Y FAN PACKS
    ========================================== */
 
 .perfil-grilla {
@@ -413,8 +387,9 @@
     background-color: var(--color-primario-activo, #4f46e5);
 }
 
+
 /* ==========================================
-   9. FILTROS
+   8. FILTROS
    ========================================== */
 
 .perfil-formulario-filtro {
@@ -455,18 +430,14 @@
     accent-color: var(--color-primario, #4338ca);
 }
 
-/* Ocultar secciones */
-
-.seccion-oculta {
-    display: none;
-}
 
 /* ==========================================
-   10. ESTRUCTURA GENERAL DE DETALLES
+   9. AJUSTES DE DETALLES DENTRO DE PERFIL
    ========================================== */
 
 .perfil-secciones-completas > .vista-detalle {
     width: 100%;
+    margin-top: 25px;
     padding: 0;
     border: none;
     background: transparent;
@@ -478,416 +449,31 @@
     display: none;
 }
 
-/* Botón volver */
-
-.boton-volver {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-    color: var(--color-primario-activo, #4f46e5);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.boton-volver:hover {
-    text-decoration: underline;
-}
-
-.boton-volver__flecha {
-    font-size: 1.2rem;
-}
-
-/* ==========================================
-   11. PRESENTACIÓN PRINCIPAL COMPARTIDA
-   ========================================== */
-
-.detalle-hero {
-    display: grid;
-    grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
-    gap: 25px;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 25px;
-    padding: 25px;
-    border: 1px solid var(--color-borde, #1e2540);
-    border-radius: 12px;
-    background: var(--color-superficie, #12172b);
-    box-shadow: 0 4px 12px #0000001a;
-    box-sizing: border-box;
-}
-
-.detalle-hero__marco-foto {
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.detalle-hero__foto {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 10px;
-    object-fit: cover;
-    object-position: center;
-}
-
-.detalle-hero__info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 0;
-    width: 100%;
-}
-
-.detalle-hero__nombre {
-    margin: 0;
-    color: var(--color-texto-principal, #f8fafc);
-    font-size: 1.7rem;
-    font-weight: 700;
-    line-height: 1.3;
-    overflow-wrap: break-word;
-    word-break: normal;
-}
-
-.detalle-hero__descripcion,
-.detalle-hero__recinto,
-.detalle-hero__fecha {
-    margin: 0;
-    color: var(--color-texto-secundario, #94a3b8);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    overflow-wrap: break-word;
-}
-
 .detalle-hero__recinto strong,
 .detalle-hero__fecha strong {
-    color: var(--color-texto-principal, #f8fafc);
-}
-
-/* Acciones compartidas */
-
-.detalle-hero__acciones {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 15px;
-    border-top: 1px solid var(--color-borde, #1e2540);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* ==========================================
-   12. DETALLE ESPECÍFICO DEL FAN PACK
-   ========================================== */
-
-.detalle-hero--fanpack {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.detalle-hero--fanpack .detalle-hero__marco-foto {
-    width: 100%;
-    max-width: 260px;
-    margin: 0 auto;
-}
-
-.detalle-hero--fanpack .detalle-hero__foto {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    background-color: #00000020;
-}
-
-#artista-detalle-fanpack {
-    margin: 0;
-    color: var(--color-primario-activo, #4f46e5);
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    overflow-wrap: break-word;
-}
-
-#nombre-detalle-fanpack {
-    margin: 0;
-    color: var(--color-texto-principal, #f8fafc);
-    font-size: 1.6rem;
-    line-height: 1.3;
-    overflow-wrap: break-word;
-    word-break: normal;
-}
-
-#descripcion-detalle-fanpack {
-    margin: 0;
     color: var(--color-texto-secundario, #94a3b8);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    overflow-wrap: break-word;
-}
-
-#precio-detalle-fanpack {
-    margin: 8px 0;
-    color: var(--color-primario-activo, #4f46e5);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-/* Botones de acciones del Fan Pack */
-
-#boton-agregar-detalle-fanpack,
-#vista-detalle-fanpack .boton-quitar-pack {
-    display: block;
-    width: 100%;
-    padding: 12px 20px;
-    border: 1px solid var(--color-primario-activo, #4f46e5);
-    border-radius: 8px;
-    background-color: var(--color-primario, #4338ca);
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
-    box-sizing: border-box;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-#boton-agregar-detalle-fanpack:hover,
-#vista-detalle-fanpack .boton-quitar-pack:hover {
-    background-color: var(--color-primario-activo, #4f46e5);
-    transform: translateY(-2px);
-}
-
-#estado-reserva-fanpack {
-    display: block;
-    margin-top: 8px;
-    text-align: center;
-}
-
-/* ==========================================
-   13. PANELES DE INFORMACIÓN COMPARTIDOS
-   ========================================== */
-
-.detalle-paneles-grilla {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.panel-box {
-    min-width: 0;
-    padding: 22px;
-    border: 1px solid var(--color-borde, #1e2540);
-    border-radius: 12px;
-    background: var(--color-superficie, #12172b);
-    box-shadow: 0 4px 12px #0000001a;
-    box-sizing: border-box;
-}
-
-.panel-box--completo {
-    grid-column: 1 / -1;
-    width: 100%;
-}
-
-.panel-box__titulo {
-    margin: 0 0 18px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-borde, #1e2540);
-    color: var(--color-texto-principal, #f8fafc);
-    font-size: 1rem;
-    font-weight: 700;
-    overflow-wrap: break-word;
 }
 
 .panel-box__texto-legal {
-    margin: 18px 0 0;
-    color: var(--color-texto-secundario, #94a3b8);
+    margin-top: 18px;
     font-size: 0.85rem;
     line-height: 1.7;
-    overflow-wrap: break-word;
 }
 
 .panel-box__texto-legal strong {
     color: var(--color-texto-principal, #f8fafc);
 }
 
-/* ==========================================
-   14. INFORMACIÓN DE HORARIOS Y DATOS
-   ========================================== */
-
-.horarios-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
-
-.horarios-grid__celda {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    min-width: 0;
-    padding: 14px;
-    border: 1px solid var(--color-borde, #1e2540);
-    border-radius: 8px;
-    background-color: #00000020;
-    box-sizing: border-box;
-}
-
-.horarios-grid__celda--completa {
-    grid-column: 1 / -1;
-}
-
-.horarios-grid__etiqueta {
-    color: var(--color-texto-secundario, #94a3b8);
-    font-size: 0.8rem;
-}
-
-.horarios-grid__valor {
-    color: var(--color-texto-principal, #f8fafc);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    overflow-wrap: break-word;
-}
-
-/* ==========================================
-   15. LISTAS DE CANCIONES E INFORMACIÓN
-   ========================================== */
-
-.canciones-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 0;
-    padding-left: 20px;
-    color: var(--color-texto-secundario, #94a3b8);
-}
-
-.canciones-lista__item {
-    padding: 12px 5px;
-    border-bottom: 1px solid var(--color-borde, #1e2540);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    overflow-wrap: break-word;
-}
-
-.canciones-lista__item:last-child {
-    border-bottom: none;
-}
-
-/* ==========================================
-   16. DISEÑO DE DETALLES DINÁMICOS DE EVENTOS
-   ========================================== */
-
-.detalle-evento-contenedor {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-}
-
-.detalle-evento-panel {
-    width: 100%;
-    padding: 22px;
-    border: 1px solid var(--color-borde, #1e2540);
-    border-radius: 12px;
-    background: var(--color-superficie, #12172b);
-    box-shadow: 0 4px 12px #0000001a;
-    box-sizing: border-box;
-}
-
-.detalle-evento-titulo {
-    margin: 0 0 18px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-borde, #1e2540);
-    color: var(--color-texto-principal, #f8fafc);
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-.detalle-evento-dato {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--color-borde, #1e2540);
-}
-
-.detalle-evento-dato:last-child {
-    border-bottom: none;
-}
-
-.detalle-evento-dato strong {
-    color: var(--color-texto-principal, #f8fafc);
-    font-size: 0.9rem;
-}
-
-.detalle-evento-dato span {
-    color: var(--color-texto-secundario, #94a3b8);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    overflow-wrap: break-word;
-}
-
-.detalle-evento-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 0;
-    padding-left: 20px;
-    list-style: disc;
-    color: var(--color-texto-secundario, #94a3b8);
-}
-
-.detalle-evento-lista li {
-    padding-left: 4px;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    overflow-wrap: break-word;
-}
-
-.boton-volver-eventos {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-    padding: 9px 15px;
-    border: 1px solid var(--color-primario-activo, #4f46e5);
-    border-radius: 6px;
-    background-color: transparent;
-    color: var(--color-primario-activo, #4f46e5);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.boton-volver-eventos:hover {
-    background-color: var(--color-primario-activo, #4f46e5);
-    color: #ffffff;
-}
-
-/* ==========================================
-   17. BOTONES GENERALES DE LA VISTA
-   ========================================== */
-
 #eventos-perfil .boton {
     margin-top: 15px;
 }
 
+
 /* ==========================================
-   18. DISEÑO RESPONSIVE
+   10. DISEÑO RESPONSIVE DE PERFIL
    ========================================== */
 
 @media (max-width: 900px) {
-
     .perfil-layout-principal {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -907,18 +493,9 @@
     .perfil-columna-izquierda {
         max-width: 100%;
     }
-
-    .detalle-hero {
-        grid-template-columns: minmax(180px, 250px) minmax(0, 1fr);
-    }
-
-    .detalle-paneles-grilla {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 600px) {
-
     .perfil-layout-principal {
         padding: 15px 12px;
         gap: 18px;
@@ -964,97 +541,9 @@
         padding: 9px 7px;
         font-size: 0.8rem;
     }
-
-    /* Detalles compartidos */
-
-    .detalle-hero {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 16px;
-        gap: 16px;
-    }
-
-    .detalle-hero__marco-foto {
-        width: 100%;
-        max-width: 220px;
-        margin: 0 auto;
-    }
-
-    .detalle-hero__info {
-        width: 100%;
-    }
-
-    .detalle-hero__nombre {
-        font-size: 1.3rem;
-    }
-
-    .detalle-hero__acciones {
-        grid-column: 1;
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-    }
-
-    .detalle-paneles-grilla {
-        grid-template-columns: 1fr;
-    }
-
-    .panel-box,
-    .detalle-evento-panel {
-        padding: 16px;
-    }
-
-    .horarios-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .horarios-grid__celda--completa {
-        grid-column: 1;
-    }
-
-    /* Detalle específico de Fan Pack en móviles */
-
-    .detalle-hero--fanpack {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 16px;
-        gap: 16px;
-    }
-
-    .detalle-hero--fanpack .detalle-hero__marco-foto {
-        width: 100%;
-        max-width: 200px;
-        margin: 0 auto;
-    }
-
-    #nombre-detalle-fanpack {
-        font-size: 1.3rem;
-        word-break: normal;
-        overflow-wrap: break-word;
-    }
-
-    #precio-detalle-fanpack {
-        font-size: 1.3rem;
-    }
-
-    #boton-agregar-detalle-fanpack,
-    #vista-detalle-fanpack .boton-quitar-pack {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* Botones de eventos */
-
-    .boton-ver-detalle-evento,
-    .boton-quitar-evento {
-        flex: 1;
-    }
 }
 
 @media (max-width: 380px) {
-
     .perfil-grilla {
         grid-template-columns: 1fr;
     }

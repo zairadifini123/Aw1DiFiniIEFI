@@ -1,4 +1,3 @@
-
 /* =========================================
    CABECERA Y BUSCADOR
    ========================================= */
@@ -120,7 +119,6 @@
 
 .tarjeta-artista__marco-foto {
     width: 100%;
-    /* Usamos aspect-ratio para que la foto mantenga una proporción perfecta responsiva */
     aspect-ratio: 16 / 10;
     background-color: #1a2238;
     border: 1.5px solid var(--color-borde);
@@ -133,7 +131,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top; /* Evita que se corten las caras centrando hacia arriba */
+    object-position: center top;
     display: block;
 }
 
@@ -226,7 +224,7 @@
 .pack-compra__miniatura img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cambiado a cover para que llene bien el espacio sin deformarse */
+    object-fit: cover;
     object-position: center;
     border-radius: 6px;
 }
@@ -300,13 +298,11 @@
 
 @media (min-width: 768px) {
 
-    /* Catálogo de artistas a 3 columnas */
     .artistas-grilla {
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
     }
 
-    /* Fan Packs a dos columnas */
     #lista-fanpacks-artista {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }

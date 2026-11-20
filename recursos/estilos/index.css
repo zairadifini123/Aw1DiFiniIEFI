@@ -1,5 +1,7 @@
+/* =========================================
+   1. BANNER PRINCIPAL
+   ========================================= */
 
-/* 1. Banner Principal */
 .banner-principal {
     background: linear-gradient(135deg, var(--color-superficie), var(--color-borde));
     border: 1px solid var(--color-borde);
@@ -32,7 +34,11 @@
     color: var(--color-texto-secundario);
 }
 
-/* 2. Secciones y Títulos */
+
+/* =========================================
+   2. SECCIONES Y TÍTULOS
+   ========================================= */
+
 .seccion-noticias,
 .seccion-filtro,
 .seccion-resultados {
@@ -48,7 +54,11 @@
     color: var(--color-texto-principal);
 }
 
-/* 3. Noticias y Novedades */
+
+/* =========================================
+   3. NOTICIAS Y NOVEDADES
+   ========================================= */
+
 .seccion-noticias__grilla {
     display: grid;
     grid-template-columns: 1fr;
@@ -86,7 +96,11 @@
     line-height: 1.5;
 }
 
-/* 4. Buscador y Filtros */
+
+/* =========================================
+   4. BUSCADOR Y FILTROS
+   ========================================= */
+
 .seccion-filtro {
     background-color: var(--color-superficie);
     border: 1px solid var(--color-borde);
@@ -150,7 +164,11 @@
     accent-color: var(--color-primario-activo);
 }
 
-/* 5. Resultados de Eventos */
+
+/* =========================================
+   5. RESULTADOS DE EVENTOS
+   ========================================= */
+
 .seccion-resultados__grilla {
     display: grid;
     grid-template-columns: 1fr;
@@ -198,26 +216,11 @@
     margin-bottom: 4px;
 }
 
-.boton-ver-detalle-evento {
-    display: inline-block;
-    width: 100%;
-    padding: 8px 14px;
-    border: 1px solid var(--color-primario-activo, #4f46e5);
-    border-radius: 6px;
-    background-color: var(--color-primario, #4338ca);
-    color: #ffffff;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
 
-.boton-ver-detalle-evento:hover {
-    background-color: var(--color-primario-activo, #4f46e5);
-}
+/* =========================================
+   6. DISEÑO RESPONSIVO ESPECÍFICO DE INICIO
+   ========================================= */
 
-/* 6. Diseño Responsivo Específico de Inicio */
 @media (min-width: 768px) {
     .seccion-noticias__grilla,
     .seccion-resultados__grilla {

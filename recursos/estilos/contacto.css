@@ -1,7 +1,7 @@
+/* =========================================
+   VISTA CONTACTO, SOPORTE Y FORMULARIO
+   ========================================= */
 
-/* vista contacto soporte y formulario */
-
-/* cabecera de la seccion */
 .contacto-intro {
     margin-bottom: 24px;
 }
@@ -18,7 +18,7 @@
     line-height: 1.5;
 }
 
-/* mensaje de estado con role alert */
+/* Mensaje de estado */
 .contacto-mensaje:empty {
     display: none;
 }
@@ -32,7 +32,7 @@
     font-size: 0.9rem;
 }
 
-/* caja del formulario */
+/* Caja del formulario */
 .seccion-contacto-form {
     background-color: var(--color-superficie);
     border: 1.5px solid var(--color-borde);
@@ -57,7 +57,7 @@
     gap: 16px;
 }
 
-/* grupos de etiqueta y campo */
+/* Grupos de etiqueta y campo */
 .campo-grupo {
     display: flex;
     flex-direction: column;
@@ -100,7 +100,7 @@
     min-height: 100px;
 }
 
-/* botones de envio y reset */
+/* Botones de envío y reset */
 .botones-contacto {
     display: flex;
     gap: 12px;
@@ -138,24 +138,24 @@
     background-color: var(--color-primario);
 }
 
-/* paneles inferiores de redes y ubicacion */
+/* Paneles inferiores de redes y ubicación */
 .contacto-info-grilla {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.panel-box {
-    background-color: var(--color-superficie);
-    border: 1.5px solid var(--color-borde);
-    border-radius: 12px;
+.contacto-info-grilla .panel-box {
+    border-width: 1.5px;
     padding: 20px;
 }
 
-.panel-box__titulo {
+.contacto-info-grilla .panel-box__titulo {
     font-size: 1.1rem;
     font-weight: 800;
     margin-bottom: 10px;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .panel-box__descripcion {
@@ -164,12 +164,11 @@
     margin-bottom: 14px;
 }
 
-/* lista de redes */
+/* Lista de redes */
 .redes-lista {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    list-style: none;
     padding: 0;
     margin: 0;
 }
@@ -188,7 +187,7 @@
     text-decoration: underline;
 }
 
-/* direccion y mapa */
+/* Dirección y mapa */
 .contacto-direccion {
     font-style: normal;
     font-size: 0.85rem;
@@ -211,29 +210,7 @@
     display: block;
 }
 
-/* icono flotante de mensajeria segun apunte de clase */
-.mensajeria {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 20;
-    background-color: #25d366;
-    border-radius: 50%;
-    width: 46px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.mensajeria img {
-    width: 24px;
-    height: 24px;
-    display: block;
-}
-
-/* responsividad para pantallas de escritorio */
+/* Responsividad para pantallas de escritorio */
 @media (min-width: 768px) {
     .contenedor-form {
         max-width: 650px;
