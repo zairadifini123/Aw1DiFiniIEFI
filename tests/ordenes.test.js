@@ -13,7 +13,7 @@ Si la afirmación falla, lanza un error y marca la prueba como fallida.
 import assert from "node:assert/strict";
 
 //Importa las funciones a probar desde el archivo src/ordenes.js
-import { calcularNuevaReserva, calcularTotalCarrito} from "../src/ordenes.js";
+import { calcularNuevaReserva, calcularTotalCarrito} from "../ordenes/ordenes.js";
 
 //PRUEBA DE: calcularNuevaReserva
 describe("calcularNuevaReserva", function () {
